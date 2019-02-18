@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Proyecto AutobusASA</h1>
+    <p class="lead">Proyecto acerca de una empresa de autobuses utilizando MVC, .NET, Razor..</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Ciudades</h2>
+        <p>
+            Accede al listado de ciudades..
+            Da de Alta una nueva ciudad
+            Elimina o Modifica una existente.
+        </p>
+        <p>@Html.ActionLink("Ir a Ciudades", "Index", "Ciudades")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Rutas</h2>
+        <p>
+            Accede al listado de rutas..
+            Da de Alta una nueva ruta
+            Elimina o Modifica una existente.
+        </p>
+        <p>@Html.ActionLink("Ir a Rutas", "Index", "Rutas")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Proximamente</h2>
+        <p>Futuras funcionalidades estan de camino. STAY INFORMED</p>
+        <p></p>
+    </div>
+</div>

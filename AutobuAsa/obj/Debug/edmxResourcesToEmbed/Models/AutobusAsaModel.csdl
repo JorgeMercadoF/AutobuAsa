@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AutobusAsaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Ciudad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="codigo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ruta" Relationship="Self.FK_Ruta_Ciudad" FromRole="Ciudad" ToRole="Ruta" />
+    <NavigationProperty Name="Ruta1" Relationship="Self.FK_Ruta_Ciudad1" FromRole="Ciudad" ToRole="Ruta" />
+  </EntityType>
+  <EntityType Name="Ruta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ciudadOrigen" Type="Int32" Nullable="false" />
+    <Property Name="ciudadDestino" Type="Int32" Nullable="false" />
+    <Property Name="km" Type="Decimal" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Ciudad" Relationship="Self.FK_Ruta_Ciudad" FromRole="Ruta" ToRole="Ciudad" />
+    <NavigationProperty Name="Ciudad1" Relationship="Self.FK_Ruta_Ciudad1" FromRole="Ruta" ToRole="Ciudad" />
+  </EntityType>
+  <Association Name="FK_Ruta_Ciudad">
+    <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+    <End Role="Ruta" Type="Self.Ruta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ruta">
+        <PropertyRef Name="ciudadOrigen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ruta_Ciudad1">
+    <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+    <End Role="Ruta" Type="Self.Ruta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ruta">
+        <PropertyRef Name="ciudadDestino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AutobusAsaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+    <EntitySet Name="Ruta" EntityType="Self.Ruta" />
+    <AssociationSet Name="FK_Ruta_Ciudad" Association="Self.FK_Ruta_Ciudad">
+      <End Role="Ciudad" EntitySet="Ciudad" />
+      <End Role="Ruta" EntitySet="Ruta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ruta_Ciudad1" Association="Self.FK_Ruta_Ciudad1">
+      <End Role="Ciudad" EntitySet="Ciudad" />
+      <End Role="Ruta" EntitySet="Ruta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

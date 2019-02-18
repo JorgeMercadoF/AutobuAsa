@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AutobusAsaModelStoreContainer" CdmEntityContainer="AutobusAsaEntities">
+    <EntitySetMapping Name="Ciudad">
+      <EntityTypeMapping TypeName="AutobusAsaModel.Ciudad">
+        <MappingFragment StoreEntitySet="Ciudad">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ruta">
+      <EntityTypeMapping TypeName="AutobusAsaModel.Ruta">
+        <MappingFragment StoreEntitySet="Ruta">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ciudadOrigen" ColumnName="ciudadOrigen" />
+          <ScalarProperty Name="ciudadDestino" ColumnName="ciudadDestino" />
+          <ScalarProperty Name="km" ColumnName="km" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
